@@ -1,4 +1,4 @@
 streamlit
 pandas
 numpy
-rpy2==3.5.17
+rpy2==3.6.8
