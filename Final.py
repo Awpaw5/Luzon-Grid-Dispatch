@@ -387,18 +387,19 @@ if st.session_state.solved is not None:
     )
 
 
-    with localconverter(converter):
+     with localconverter(converter):
         r_result = simplex(initialTableau, False)
-    
-    result = dict(zip(
-        list(r_result.names),
-        list(r_result)
-    ))
 
-    if hasattr(result, "rx2") and "status" in list(result.rx2("names")):
-        status = str(result.rx2("status")[0])
-    else:
-        status = "optimal"
+        result = {
+            "finalTableau": np.array(r_result[0]),
+            "basicSolution": np.array(r_result[1]),
+            "Z": float(r_result[2][0]),
+            "history": r_result[3],
+            "iteration": int(r_result[4][0])
+        }
+
+    status = "optimal"
+    iterations = result["iteration"]
 
     iterations = int(np.array(result["iteration"]).item())
         
