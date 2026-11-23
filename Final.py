@@ -391,10 +391,8 @@ if st.session_state.solved is not None:
         result = simplex(initialTableau, False)
 
     # handle infeasibility before displaying optimal-solution outputs
-    result_names = list(result.names) if result.names is not None else []
-    
-    if "status" in result_names:
-        status = str(result.rx2("status")[0])
+    if "status" in result.keys():
+        status = str(result["status"][0])
     else:
         status = "optimal"
 
