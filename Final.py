@@ -388,7 +388,12 @@ if st.session_state.solved is not None:
 
 
     with localconverter(converter):
-        result = simplex(initialTableau, False)
+        r_result = simplex(initialTableau, False)
+    
+    result = dict(zip(
+        list(r_result.names),
+        list(r_result)
+    ))
 
     if hasattr(result, "rx2") and "status" in list(result.rx2("names")):
         status = str(result.rx2("status")[0])
