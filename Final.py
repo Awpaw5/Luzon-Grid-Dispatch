@@ -543,12 +543,12 @@ if st.session_state.solved is not None:
 
                     basic_columns = tableau_columns[:-1]
             
-                    unknows_df = pd.DataFrame(
+                    basic_df = pd.DataFrame(
                         step_data[1],
                         columns=basic_columns
                     )
                                 
-                    st.dataframe(unknows_df, width="stretch")
+                    st.dataframe(basic_df, width="stretch")
 
 
         with chart_tab:
