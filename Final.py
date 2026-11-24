@@ -387,7 +387,7 @@ if st.session_state.solved is not None:
     )
 
 
-        with localconverter(converter):
+    with localconverter(converter):
         r_result = simplex(initialTableau, False)
 
         result = {
