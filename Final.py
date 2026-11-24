@@ -393,7 +393,7 @@ if st.session_state.solved is not None:
         result = {
             "finalTableau": np.asarray(r_result[0]),
             "basicSolution": np.asarray(r_result[1]),
-            "Z": float(np.asarray(r_result[2]).flatten()[0]),
+            "Z": float(np.asarray(r_result[1], dtype=float).reshape(-1)[-1]),
             "history": r_result[3],
             "iteration": int(np.asarray(r_result[4]).flatten()[0])
         }
