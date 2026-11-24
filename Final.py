@@ -389,15 +389,12 @@ if st.session_state.solved is not None:
 
     with localconverter(converter):
         r_result = simplex(initialTableau, False)
-    
-        final_tableau = np.asarray(r_result[0])
-    
-        # Restore the tableau dimensions if it was flattened
-        if final_tableau.ndim == 1:
-            final_tableau = final_tableau.reshape(initialTableau.shape, order="F")
+        st.write("Returned object type:", type(r_result))
+        st.write("Returned object:", r_result)
+        st.write("First item type:", type(r_result[0]))
     
         result = {
-            "finalTableau": final_tableau,
+            "finalTableau": np.asarray(r_result[0]),
             "basicSolution": np.asarray(r_result[1]),
             "Z": float(np.asarray(r_result[1], dtype=float).reshape(-1)[-1]),
             "history": r_result[3],
