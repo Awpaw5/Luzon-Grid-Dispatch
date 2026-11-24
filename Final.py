@@ -529,8 +529,7 @@ if st.session_state.solved is not None:
                         for t in range(1, timeblock + 1)]
                         + ["Z", "Solution"]
                     )
-
-
+                    
                     st.dataframe(
                         pd.DataFrame(
                             np.array(step_data[0]),
@@ -542,13 +541,15 @@ if st.session_state.solved is not None:
 
                     st.write("### Basic Solution")
 
-                    st.dataframe(
-                        pd.DataFrame(
-                            np.array(step_data[1]),
-                            columns=basic_columns
-                        ),
-                        width="stretch"
+                    basic_columns = tableau_columns[:-1]
+            
+                    unknows_df = pd.DataFrame(
+                        step_data[1],
+                        columns=basic_columns
                     )
+                                
+                    st.dataframe(unknows_df, width="stretch")
+
 
         with chart_tab:
 
