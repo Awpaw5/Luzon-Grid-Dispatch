@@ -538,6 +538,7 @@ if st.session_state.solved is not None:
                         ),
                         width="stretch"
                     )
+                    basic_columns = tableau_columns[:-1]
 
                     st.write("### Basic Solution")
 
