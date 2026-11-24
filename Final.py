@@ -391,11 +391,11 @@ if st.session_state.solved is not None:
         r_result = simplex(initialTableau, False)
 
         result = {
-            "finalTableau": np.array(r_result.rx2("finalTableau")),
-            "basicSolution": np.array(r_result.rx2("basicSolution")),
-            "Z": float(r_result.rx2("Z")[0]),
-            "history": r_result.rx2("history"),
-            "iteration": int(r_result.rx2("iteration")[0])
+            "finalTableau": np.asarray(r_result[0]),
+            "basicSolution": np.asarray(r_result[1]),
+            "Z": float(np.asarray(r_result[2]).flatten()[0]),
+            "history": r_result[3],
+            "iteration": int(np.asarray(r_result[4]).flatten()[0])
         }
 
     status = "optimal"
