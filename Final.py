@@ -389,16 +389,13 @@ if st.session_state.solved is not None:
 
     with localconverter(converter):
         r_result = simplex(initialTableau, False)
-        st.write("Returned object type:", type(r_result))
-        st.write("Returned object:", r_result)
-        st.write("First item type:", type(r_result[0]))
     
         result = {
-            "finalTableau": np.asarray(r_result[0]),
-            "basicSolution": np.asarray(r_result[1]),
-            "Z": float(np.asarray(r_result[1], dtype=float).reshape(-1)[-1]),
-            "history": r_result[3],
-            "iteration": int(np.asarray(r_result[4]).flatten()[0])
+            "finalTableau": np.asarray(r_result.getbyname("finalTableau")),
+            "basicSolution": np.asarray(r_result.getbyname("basicSolution")),
+            "Z": float(np.asarray(r_result.getbyname("Z")).item()),
+            "history": r_result.getbyname("history"),
+            "iteration": int(np.asarray(r_result.getbyname("iteration")).item())
         }
 
     status = "optimal"
