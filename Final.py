@@ -539,7 +539,7 @@ if st.session_state.solved is not None:
                         width="stretch"
                     )
 
-                     st.write("### Basic Solution")
+                    st.write("### Basic Solution")
 
                     st.dataframe(
                         pd.DataFrame(
