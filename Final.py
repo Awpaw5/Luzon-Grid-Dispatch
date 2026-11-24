@@ -519,7 +519,7 @@ if st.session_state.solved is not None:
             )
         
             # to input data 
-            for i, (_, step_data) in enumerate(result["history"].items()):
+            for i, step_data in enumerate(result["history"]):
                 with st.expander(f"Iteration {i}"): #uses expander
                     st.write("### Tableau")
 
@@ -531,15 +531,19 @@ if st.session_state.solved is not None:
                         + ["Z", "Solution"]
                     )
 
-                    st.dataframe(pd.DataFrame(np.array(step_data["finalTableau"]), 
-                        columns = tableau_columns),
-                          width="stretch")
+                   st.dataframe(
+                        pd.DataFrame(np.array(step_data[0]), columns=tableau_columns),
+                        width="stretch"
+                    )
 
                     st.write("### Basic Solution")
 
                     basic_columns = tableau_columns[:-1]
 
-                    st.dataframe(pd.DataFrame(np.array(step_data["basicSolution"]), columns = basic_columns),width="stretch")
+                    st.dataframe(
+                        pd.DataFrame(np.array(step_data[1]), columns=basic_columns),
+                        width="stretch"
+                    )
 
         with chart_tab:
 
