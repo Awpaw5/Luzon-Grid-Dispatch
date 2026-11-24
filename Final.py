@@ -387,15 +387,15 @@ if st.session_state.solved is not None:
     )
 
 
-    with localconverter(converter):
+        with localconverter(converter):
         r_result = simplex(initialTableau, False)
 
         result = {
-            "finalTableau": np.array(r_result[0]),
-            "basicSolution": np.array(r_result[1]),
-            "Z": float(r_result[2]),
-            "history": r_result[3],
-            "iteration": int(r_result[4][0])
+            "finalTableau": np.array(r_result.rx2("finalTableau")),
+            "basicSolution": np.array(r_result.rx2("basicSolution")),
+            "Z": float(r_result.rx2("Z")[0]),
+            "history": r_result.rx2("history"),
+            "iteration": int(r_result.rx2("iteration")[0])
         }
 
     status = "optimal"
