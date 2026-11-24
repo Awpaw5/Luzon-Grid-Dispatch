@@ -543,13 +543,9 @@ if st.session_state.solved is not None:
 
                     basic_columns = tableau_columns[:-1]
             
-                    basic_df = pd.DataFrame(
-                        step_data[1],
-                        columns=basic_columns
-                    )
-                                
-                    st.dataframe(basic_df, width="stretch")
+                    basic_df = pd.DataFrame(np.array(step_data[1]))
 
+                    st.dataframe(basic_df, width="stretch")
 
         with chart_tab:
 
